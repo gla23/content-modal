@@ -18,12 +18,14 @@ interface ContentModalProps {
   /**
    * @description The width of the modal unless limited by screen size
    */
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
 }
+export const defaultWidth = 640;
+export const defaultHeight = 400;
 
 export const ContentModal = (props: ContentModalProps) => {
-  const { content, width, height } = props;
+  const { content, width = defaultWidth, height = 400 } = props;
 
   const [selected, setSelected] = useState(0);
   const increaseIndex = (increace: number) =>

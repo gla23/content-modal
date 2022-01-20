@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { ContentModal, Renderable } from "./Modal/ContentModal";
+import {
+  ContentModal,
+  defaultHeight,
+  defaultWidth,
+  Renderable,
+} from "./Modal/ContentModal";
 import githubLogoLight from "./images/GitHub_dark.png";
 import githubLogoDark from "./images/GitHub_light.png";
 import { Modal } from "./Modal/Modal";
@@ -172,8 +177,6 @@ export function App() {
       <ContentModal
         isOpen={modalOpen === 101}
         onClose={() => openModal(null)}
-        width={800}
-        height={500}
         content={[
           <div className="p-8 pt-4">
             <div className="text-5xl mb-4">Props</div>
@@ -201,22 +204,71 @@ export function App() {
                   <td>
                     <code>width</code>
                   </td>
-                  <td>Change the default width (optional)</td>
+                  <td>Change the default width (default {defaultWidth})</td>
                 </tr>
                 <tr>
                   <td>
                     <code>height</code>
                   </td>
-                  <td>Change the default height (optional)</td>
+                  <td>Change the default height (default {defaultHeight})</td>
                 </tr>
               </tbody>
             </table>
           </div>,
-          <div className="p-8">This is element two of the context array.</div>,
+          <div className="px-4">
+            <div className="mb-6">This is page two.</div>
+            <div className="mb-6">
+              ContentModal automatically adds <Code>overflow-y: scroll</Code> if
+              a content element is longer than there is space.{" "}
+            </div>
+            <div className="mb-6">{longText}</div>
+          </div>,
         ]}
       />
       <div className="my-32" />
-      hen an unknown printer took a galley of type and scrambled it to make a
+      {longText}
+    </div>
+  );
+}
+const content = [
+  <div className="p-8">
+    <div className="text-6xl">Title text</div>
+    <div className="text-xl mt-8">
+      This is a splash page with some intro text right here before your very
+      eyes.
+    </div>
+    <div className="text-xl mt-4">
+      Click on the right arrow to see the next page.
+    </div>
+  </div>,
+  <div className="p-8">
+    <div className="text-2xl mt-4">
+      You can also use the arrow keys{" "}
+      <span className="ml-2 rotate-90 inline-block">
+        <span className="animate-bounce inline-block">⬆️</span>
+      </span>
+    </div>
+  </div>,
+  <div className="p-8">
+    <div className="text-2xl mt-4">
+      Or click on the section markers below{" "}
+      <span className=" inline-block relative top-2 ml-1">⤵</span>{" "}
+    </div>
+  </div>,
+  <div className="p-8">
+    <div className="text-2xl mt-4">Just drink in that animation.</div>
+  </div>,
+  <div className="p-8">
+    <div className="text-2xl mt-4">
+      The modal closes when you click outside or press the Escape key.
+    </div>
+  </div>,
+];
+function Code(props: { children: Renderable }) {
+  return <code className="text-red-500/60 text-sm mx-1">{props.children}</code>;
+}
+const longText = `
+hen an unknown printer took a galley of type and scrambled it to make a
       type specimen book. It has survived not only five centuries, but also the
       leap into electronic typesetting, remaining essentially unchanged. It was
       popularised in the 1960s with the release of Letraset sheets containing
@@ -395,44 +447,4 @@ export function App() {
       typesetting industry. Lorem Ipsum has been the industry's standard dummy
       text ever since the 1500s, when an unknown printer took a galley of type
       and scrambled it to make a type specimen book. It has survived not only
-      five centuri
-    </div>
-  );
-}
-const content = [
-  <div className="p-8">
-    <div className="text-6xl">Title text</div>
-    <div className="text-xl mt-8">
-      This is a splash page with some intro text right here before your very
-      eyes.
-    </div>
-    <div className="text-xl mt-4">
-      Click on the right arrow to see the next page.
-    </div>
-  </div>,
-  <div className="p-8">
-    <div className="text-2xl mt-4">
-      You can also use the arrow keys{" "}
-      <span className="ml-2 rotate-90 inline-block">
-        <span className="animate-bounce inline-block">⬆️</span>
-      </span>
-    </div>
-  </div>,
-  <div className="p-8">
-    <div className="text-2xl mt-4">
-      Or click on the section markers below{" "}
-      <span className=" inline-block relative top-2 ml-1">⤵</span>{" "}
-    </div>
-  </div>,
-  <div className="p-8">
-    <div className="text-2xl mt-4">Just drink in that animation.</div>
-  </div>,
-  <div className="p-8">
-    <div className="text-2xl mt-4">
-      The modal closes when you click outside or press the Escape key.
-    </div>
-  </div>,
-];
-function Code(props: { children: Renderable }) {
-  return <code className="text-red-500/60 text-sm">{props.children}</code>;
-}
+      five centuri`;
