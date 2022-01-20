@@ -49,11 +49,7 @@ export const ContentModal = (props: ContentModalProps) => {
 
   return (
     <Modal isOpen={props.isOpen} onClose={props.onClose}>
-      <div
-        style={{
-          display: "flex",
-        }}
-      >
+      <div className="flex">
         <animated.div
           style={{ ...arrowStyle, opacity: spring.tab.to((v) => v) }}
           onClick={left}

@@ -1,7 +1,8 @@
-import { forwardRef, RefObject } from "react";
+import { forwardRef, RefObject, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { animated, useTransition } from "react-spring";
 import { useKeyPress } from "./useKeypress";
+import "./Modal.css";
 
 export interface ModalProps {
   children: React.ReactNode | string;
@@ -23,6 +24,12 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     enter: { opacity: 1, top: 50 },
     leave: { opacity: 0, top: -1000 },
   });
+
+  useEffect(() => {
+    if (!props.isOpen) return;
+    document.body.classList.add("modal-open");
+    return () => document.body.classList.remove("modal-open");
+  }, [props.isOpen]);
 
   let modalRoot = document.querySelector("#modalRoot");
   if (!modalRoot) {
@@ -54,7 +61,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         item ? (
           <animated.div
             ref={ref}
-            className="bg-white text-black dark:bg-neutral-700 dark:text-white"
+            className="transition-colours bg-white text-black dark:bg-neutral-700 dark:text-white"
             style={{
               position: "fixed",
               ...style,

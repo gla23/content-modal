@@ -17,17 +17,19 @@ export function App() {
     if (dark) document.documentElement.classList.add("dark");
     if (!dark) document.documentElement.classList.remove("dark");
   }, [dark]);
-
+  const darkMode = (
+    <div
+      className="text-3xl absolute top-9 md:top-11 right-12"
+      onClick={() => setDark((d) => !d)}
+    >
+      {dark ? "🌙" : "☀️"}
+    </div>
+  );
   return (
     <div className={"max-w-2xl m-auto p-10" + (dark ? " dark" : "")}>
-      <div
-        className="text-3xl absolute top-9 md:top-11 right-12"
-        onClick={() => setDark((d) => !d)}
-      >
-        {dark ? "🌙" : "☀️"}
-      </div>
+      {darkMode}
       <div className="text-2xl md:text-5xl whitespace-nowrap">
-        content-modal Examples{" "}
+        content-modal examples{" "}
         <a href="https://github.com/gla23/content-modal">
           <img
             className="-mt-1 ml-2 h-5 w-5 inline"
@@ -164,7 +166,46 @@ export function App() {
         onClose={() => openModal(null)}
         width={800}
         height={500}
-        content={content}
+        content={[
+          <div className="p-8">
+            <div className="text-6xl">Title text</div>
+            <div className="text-xl mt-8">
+              This is a splash page with some intro text right here before your
+              very eyes.
+            </div>
+            <div className="text-xl mt-4">
+              Click on the right arrow to see the next page.
+            </div>
+          </div>,
+          <div className="p-8">
+            <div className="text-2xl mt-4">
+              You can also use the arrow keys{" "}
+              <span className="ml-2 rotate-90 inline-block">
+                <span className="animate-bounce inline-block">⬆️</span>
+              </span>
+            </div>
+          </div>,
+          <div className="p-8">
+            <div className="text-2xl mt-4">
+              Or click on the section markers below{" "}
+              <span className=" inline-block relative top-2 ml-1">⤵</span>{" "}
+            </div>
+          </div>,
+          <div className="p-8">
+            <div className="text-2xl mt-4">Just drink in that animation.</div>
+          </div>,
+          <div className="p-8">
+            <div className="text-2xl mt-4">
+              The modal closes when you click outside or press the Escape key.
+            </div>
+          </div>,
+          <div className="p-8">
+            <div className="text-2xl mt-4">{darkMode}</div>
+            <div className="text-4xl absolute bottom-20 left-20">
+              Twas brillig...
+            </div>
+          </div>,
+        ]}
       />
       <span className="text-md md:text-xl whitespace-nowrap ">
         <span
@@ -216,10 +257,9 @@ export function App() {
             </table>
           </div>,
           <div className="px-4">
-            <div className="mb-6">This is page two.</div>
             <div className="mb-6">
-              ContentModal automatically adds <Code>overflow-y: scroll</Code> if
-              a content element is longer than there is space.{" "}
+              ContentModal automatically adds <Code>overflow-y: scroll</Code>{" "}
+              for each page that is taller than the height prop.{" "}
             </div>
             <div className="mb-6">{longText}</div>
           </div>,
@@ -230,40 +270,7 @@ export function App() {
     </div>
   );
 }
-const content = [
-  <div className="p-8">
-    <div className="text-6xl">Title text</div>
-    <div className="text-xl mt-8">
-      This is a splash page with some intro text right here before your very
-      eyes.
-    </div>
-    <div className="text-xl mt-4">
-      Click on the right arrow to see the next page.
-    </div>
-  </div>,
-  <div className="p-8">
-    <div className="text-2xl mt-4">
-      You can also use the arrow keys{" "}
-      <span className="ml-2 rotate-90 inline-block">
-        <span className="animate-bounce inline-block">⬆️</span>
-      </span>
-    </div>
-  </div>,
-  <div className="p-8">
-    <div className="text-2xl mt-4">
-      Or click on the section markers below{" "}
-      <span className=" inline-block relative top-2 ml-1">⤵</span>{" "}
-    </div>
-  </div>,
-  <div className="p-8">
-    <div className="text-2xl mt-4">Just drink in that animation.</div>
-  </div>,
-  <div className="p-8">
-    <div className="text-2xl mt-4">
-      The modal closes when you click outside or press the Escape key.
-    </div>
-  </div>,
-];
+
 function Code(props: { children: Renderable }) {
   return <code className="text-red-500/60 text-sm mx-1">{props.children}</code>;
 }
