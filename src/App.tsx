@@ -32,12 +32,12 @@ export function App() {
         </a>
       </div>
       <br />
-      <span className="text-xl mr-4">A simple modal</span>
+      <div className="text-xl my-2">Modal component</div>
       <span
-        className="bg-neutral-500/50 p-2 px-5 rounded my-1 inline-block"
+        className="bg-neutral-500/50 p-2 px-5 rounded my-1 inline-block mr-4"
         onClick={() => openModal(0)}
       >
-        Open
+        A simple modal
       </span>
       <Modal isOpen={modalOpen === 0} onClose={() => openModal(null)}>
         <div className="p-8">
@@ -58,13 +58,11 @@ export function App() {
           </div>
         </div>
       </Modal>
-      <div className="break my-4"></div>
-      <span className="text-xl mr-4">Lots of text</span>
       <span
-        className="bg-neutral-500/50 p-2 px-5 rounded my-1 inline-block"
+        className="bg-neutral-500/50 p-2 px-5 rounded my-1 inline-block mr-4"
         onClick={() => openModal(10)}
       >
-        Open
+        Lots of text
       </span>
       <Modal isOpen={modalOpen === 10} onClose={() => openModal(null)}>
         <div className="p-8">
@@ -118,13 +116,11 @@ export function App() {
           </div>
         </div>
       </Modal>
-      <div className="break my-4"></div>
-      <span className="text-xl mr-4">Custom size</span>
       <span
-        className="bg-neutral-500/50 p-2 px-5 rounded my-1 inline-block"
+        className="bg-neutral-500/50 p-2 px-5 rounded my-1 inline-block mr-4"
         onClick={() => openModal(11)}
       >
-        Open
+        Custom size
       </span>
       <Modal isOpen={modalOpen === 11} onClose={() => openModal(null)}>
         <div className="p-10 w-[48rem] max-w-full">
@@ -149,22 +145,77 @@ export function App() {
         </div>
       </Modal>
       <div className="break my-4"></div>
+      <div className="text-xl my-2">Content modal</div>
       <span className="text-md md:text-xl whitespace-nowrap ">
-        A "content modal" containing multiple pages
         <span
-          className="text-base bg-neutral-500/50 p-2 px-5 rounded my-1 ml-4 inline-block"
-          onClick={() => openModal(1)}
+          className="text-base bg-neutral-500/50 p-2 px-5 rounded my-1 mr-4 inline-block"
+          onClick={() => openModal(100)}
         >
-          Open
+          Features
         </span>
       </span>
       <ContentModal
-        isOpen={modalOpen === 1}
+        isOpen={modalOpen === 100}
         onClose={() => openModal(null)}
         width={800}
         height={500}
         content={content}
       />
+      <span className="text-md md:text-xl whitespace-nowrap ">
+        <span
+          className="text-base bg-neutral-500/50 p-2 px-5 rounded my-1 mr-4 inline-block"
+          onClick={() => openModal(101)}
+        >
+          Usage
+        </span>
+      </span>
+      <ContentModal
+        isOpen={modalOpen === 101}
+        onClose={() => openModal(null)}
+        width={800}
+        height={500}
+        content={[
+          <div className="p-8 pt-4">
+            <div className="text-5xl mb-4">Props</div>
+            <table>
+              <tbody>
+                <tr>
+                  <td>
+                    <code>isOpen</code>
+                  </td>
+                  <td>Whether or not the modal is showing</td>
+                </tr>
+                <tr>
+                  <td>
+                    <code>onClose</code>
+                  </td>
+                  <td>A callback to call when the user closes the modal</td>
+                </tr>
+                <tr>
+                  <td>
+                    <code>content</code>
+                  </td>
+                  <td>Your array of content, each element producing a page.</td>
+                </tr>
+                <tr>
+                  <td>
+                    <code>width</code>
+                  </td>
+                  <td>Change the default width (optional)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <code>height</code>
+                  </td>
+                  <td>Change the default height (optional)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>,
+          <div className="p-8">This is element two of the context array.</div>,
+        ]}
+      />
+      <div className="my-32" />
       hen an unknown printer took a galley of type and scrambled it to make a
       type specimen book. It has survived not only five centuries, but also the
       leap into electronic typesetting, remaining essentially unchanged. It was
@@ -369,13 +420,12 @@ const content = [
   </div>,
   <div className="p-8">
     <div className="text-2xl mt-4">
-      Or click on the section markers below ⤵{" "}
+      Or click on the section markers below{" "}
+      <span className=" inline-block relative top-2 ml-1">⤵</span>{" "}
     </div>
   </div>,
   <div className="p-8">
-    <div className="text-2xl mt-4">
-      Just look at that excessively aesthetic animation.
-    </div>
+    <div className="text-2xl mt-4">Just drink in that animation.</div>
   </div>,
   <div className="p-8">
     <div className="text-2xl mt-4">

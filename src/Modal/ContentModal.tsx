@@ -60,7 +60,7 @@ export const ContentModal = (props: ContentModalProps) => {
             style={{
               position: "absolute",
               top: "50%",
-              transform: "translateX(25%) translateY(-50%)",
+              transform: "translateX(50%) translateY(-50%)",
               filter: "brightness(3)",
             }}
             alt="Previous section arrow"
@@ -125,7 +125,7 @@ export const ContentModal = (props: ContentModalProps) => {
             style={{
               position: "absolute",
               top: "50%",
-              transform: "translateX(-25%) translateY(-50%) rotate(180deg)",
+              transform: "translateX(-50%) translateY(-50%) rotate(180deg)",
               filter: "brightness(3)",
             }}
             alt="Next section arrow"
