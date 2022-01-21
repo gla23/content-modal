@@ -25,7 +25,7 @@ export const defaultWidth = 640;
 export const defaultHeight = 400;
 
 export const ContentModal = (props: ContentModalProps) => {
-  const { content, width = defaultWidth, height = 400 } = props;
+  const { content, width = defaultWidth, height = defaultHeight } = props;
 
   const [selected, setSelected] = useState(0);
   const increaseIndex = (increace: number) =>
@@ -86,7 +86,7 @@ export const ContentModal = (props: ContentModalProps) => {
                 key={index}
                 style={{
                   height: height - paddingTop - dotsHeight,
-                  width: width - 2 * arrowWidth,
+                  width: "100%",
                   overflowY: index === selected ? "auto" : "hidden",
                   position: "absolute",
                   transform: spring.tab.to(
