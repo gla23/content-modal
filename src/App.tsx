@@ -5,6 +5,8 @@ import githubLogoDark from "./images/GitHub_light.png";
 import { Modal } from "./Modal/Modal";
 import { propsTable } from "./propsTable";
 import { CheckboxSet } from "./CheckboxSet";
+import { Sun } from "./Sun";
+import { Moon } from "./Moon";
 
 export function App() {
   const [dark, setDark] = useState(true);
@@ -21,7 +23,7 @@ export function App() {
       className="text-3xl absolute top-9 md:top-11 right-12"
       onClick={() => setDark((d) => !d)}
     >
-      {dark ? "🌙" : "☀️"}
+      {dark ? <Moon /> : <Sun />}
     </div>
   );
   return (
