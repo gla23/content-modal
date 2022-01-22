@@ -1,5 +1,5 @@
-import { useSpring } from "@react-spring/core";
-import React, { forwardRef, useState } from "react";
+import { useSpring, config } from "@react-spring/core";
+import React, { useState } from "react";
 import { animated } from "react-spring";
 import { Modal } from "./Modal";
 import { SectionDots } from "./SectionDots";
@@ -20,19 +20,31 @@ interface ContentModalProps {
    */
   width?: number;
   height?: number;
+  springConfig?:
+    | "default"
+    | "gentle"
+    | "wobbly"
+    | "stiff"
+    | "slow"
+    | "molasses";
 }
 export const defaultWidth = 640;
 export const defaultHeight = 400;
 
 export const ContentModal = (props: ContentModalProps) => {
-  const { content, width = defaultWidth, height = defaultHeight } = props;
+  const {
+    content,
+    width = defaultWidth,
+    height = defaultHeight,
+    springConfig = "default",
+  } = props;
 
   const [selected, setSelected] = useState(0);
   const increaseIndex = (increace: number) =>
     setSelected(Math.min(content.length - 1, Math.max(0, selected + increace)));
-  const paddingTop = 24;
   const dotsHeight = 32;
-  const arrowWidth = 24;
+  const paddingTop = dotsHeight;
+  const arrowWidth = 36;
   const arrowStyle: React.CSSProperties = {
     flex: arrowWidth + "px 0 0",
     textAlign: "center",
@@ -45,10 +57,16 @@ export const ContentModal = (props: ContentModalProps) => {
   useKeyPress("ArrowLeft", props.isOpen && left);
   useKeyPress("ArrowRight", props.isOpen && right);
 
-  const spring = useSpring({ tab: selected });
+  const spring = useSpring({ tab: selected, config: config[springConfig] });
 
   return (
-    <Modal isOpen={props.isOpen} onClose={props.onClose}>
+    <Modal
+      isOpen={props.isOpen}
+      onClose={() => {
+        setTimeout(() => setSelected(0), 700);
+        props.onClose();
+      }}
+    >
       <div className="flex">
         <animated.div
           style={{ ...arrowStyle, opacity: spring.tab.to((v) => v) }}
@@ -56,10 +74,11 @@ export const ContentModal = (props: ContentModalProps) => {
         >
           <img
             style={{
+              width: 24,
               position: "absolute",
               top: "50%",
               transform: "translateX(50%) translateY(-50%)",
-              filter: "brightness(3)",
+              filter: "brightness(4)",
             }}
             alt="Previous section arrow"
             src={arrow}
@@ -121,10 +140,11 @@ export const ContentModal = (props: ContentModalProps) => {
         >
           <img
             style={{
+              width: 24,
               position: "absolute",
               top: "50%",
-              transform: "translateX(-50%) translateY(-50%) rotate(180deg)",
-              filter: "brightness(3)",
+              transform: "translateY(-50%) rotate(180deg)",
+              filter: "brightness(4)",
             }}
             alt="Next section arrow"
             src={arrow}

@@ -1,6 +1,6 @@
 import { useSprings } from "@react-spring/core";
 import { animated } from "@react-spring/web";
-import { StatePair } from "../../pages/GamePage";
+import { StatePair } from "../CheckboxSet";
 
 interface SectionDotsProps {
   count: number;
@@ -18,7 +18,7 @@ export const SectionDots = (props: SectionDotsProps) => {
     dots.map((_, index) => ({
       from: { opacity: 0, height: "0px", width: "0px" },
       to: {
-        opacity: index === selected ? 0.9 : 0.6,
+        opacity: index === selected ? 1 : 0.6,
         left: spacing * index + (index > selected ? extraBulgeWidth : 0) + 6,
         height: height + "px",
         width: height + (index === selected ? extraBulgeWidth : 0) + "px",
@@ -40,7 +40,7 @@ export const SectionDots = (props: SectionDotsProps) => {
           key={i}
           style={{
             ...styles,
-            backgroundColor: "#bbb",
+            backgroundColor: "#999",
             position: "absolute",
           }}
         />
