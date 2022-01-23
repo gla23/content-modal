@@ -43,8 +43,8 @@ export const ContentModal = (props: ContentModalProps) => {
   const increaseIndex = (increace: number) =>
     setSelected(Math.min(content.length - 1, Math.max(0, selected + increace)));
   const dotsHeight = 32;
-  const paddingTop = dotsHeight;
-  const arrowWidth = 36;
+  const paddingTop = 20; //dotsHeight;
+  const arrowWidth = 32;
   const arrowStyle: React.CSSProperties = {
     flex: arrowWidth + "px 0 0",
     textAlign: "center",
@@ -61,13 +61,14 @@ export const ContentModal = (props: ContentModalProps) => {
 
   return (
     <Modal
+      padding={"0px"}
       isOpen={props.isOpen}
       onClose={() => {
         setTimeout(() => setSelected(0), 700);
         props.onClose();
       }}
     >
-      <div className="flex">
+      <div className="flex max-h-full max-w-full" style={{ width, height }}>
         <animated.div
           style={{ ...arrowStyle, opacity: spring.tab.to((v) => v) }}
           onClick={left}
@@ -77,7 +78,7 @@ export const ContentModal = (props: ContentModalProps) => {
               width: 24,
               position: "absolute",
               top: "50%",
-              transform: "translateX(50%) translateY(-50%)",
+              transform: "translateX(25%) translateY(-50%)",
               filter: "brightness(4)",
             }}
             alt="Previous section arrow"
@@ -87,9 +88,9 @@ export const ContentModal = (props: ContentModalProps) => {
         <div
           style={{
             display: "flex",
+            flex: "200px 1 1",
             flexDirection: "column",
-            width,
-            height,
+            maxHeight: "100%",
             paddingTop,
           }}
         >

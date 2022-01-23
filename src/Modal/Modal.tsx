@@ -10,6 +10,7 @@ export interface ModalProps {
   onClose: () => void;
   isOpen?: boolean;
   ref?: ((instance: HTMLDivElement | null) => void) | RefObject<HTMLDivElement>;
+  padding?: string;
 }
 export const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   useKeyPress("Escape", props.isOpen && props.onClose);
@@ -63,35 +64,26 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
             ref={ref}
             className="transition-colours bg-white text-black dark:bg-neutral-700 dark:text-white"
             style={{
+              padding: props.padding ?? "1rem",
               position: "fixed",
               ...style,
-              maxWidth: "80vw",
-              minWidth: "min(80vw, 500px)",
               margin: "auto",
-              minHeight: "240px",
               left: "50vw",
               transform: "translateX(-50%)",
               borderRadius: "8px",
             }}
           >
-            {props.title && (
-              <div
-                style={{
-                  display: "flex",
-                  height: 80,
-                  padding: 28,
-                  borderBottom: "solid grey 1px",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <h1>{props.title}</h1>
-                <button style={{ fontSize: 24 }} onClick={props.onClose}>
-                  ×
-                </button>
-              </div>
-            )}
-            {props.children}
+            <div
+              className="flex"
+              style={{
+                maxWidth: "80vw",
+                minWidth: "min(80vw, 400px)",
+                minHeight: "220px",
+                maxHeight: "min(calc(90vh - 100px), 500px)",
+              }}
+            >
+              <div className="overflow-auto">{props.children}</div>
+            </div>
           </animated.div>
         ) : null
       )}

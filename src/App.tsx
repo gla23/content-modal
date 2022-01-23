@@ -10,6 +10,7 @@ import { Moon } from "./Moon";
 
 export function App() {
   const [dark, setDark] = useState(true);
+  const [broken, setBroken] = useState(false);
   const [modalOpen, openModal] = useState<null | number>(null);
   const [springConfig, setSpringConfig] = useState<
     "default" | "gentle" | "wobbly" | "stiff" | "slow" | "molasses"
@@ -49,12 +50,11 @@ export function App() {
           A simple modal
         </span>
         <Modal isOpen={modalOpen === 0} onClose={() => openModal(null)}>
-          <div className="p-8">
+          <div className="p-4">
             <div className="text-4xl">This is a modal</div>
             <div className="mt-6">
               The children provided to the Modal component appear inside.
             </div>
-            <div className="mt-6">{longText}</div>
           </div>
         </Modal>
         <span
@@ -64,18 +64,13 @@ export function App() {
           Lots of text
         </span>
         <Modal isOpen={modalOpen === 10} onClose={() => openModal(null)}>
-          <div className="p-8">
+          <div className="p-4 max-h-full">
             <div className="text-4xl mb-4">Modal height</div>
-            <div className="h-96 overflow-scroll">
+            <div className="overflow-auto">
+              <div className="mb-4">The modal automatically adds scroll.</div>
               <div className="mb-4">
-                A div's height comes from its contents.{" "}
+                {longText + longText + longText + longText}
               </div>
-              <div className="mb-4">
-                If you want a lot of text without the modal growing very large,
-                you will need to specify the height of your contents and add a
-                scroll for the overflow. <Code>h-96 overflow-scroll</Code>.
-              </div>
-              <div className="mb-4">{longText + longText}</div>
             </div>
           </div>
         </Modal>
@@ -86,9 +81,9 @@ export function App() {
           Custom size
         </span>
         <Modal isOpen={modalOpen === 11} onClose={() => openModal(null)}>
-          <div className="p-10 w-[48rem] max-w-full">
+          <div className="p-4 w-[48rem] max-w-full">
             <div className="text-4xl">Custom size</div>
-            <div className="mt-6 h-96 overflow-scroll">
+            <div className="mt-6 ">
               <div className="mb-4">
                 The Modal div is <Code>position: fixed</Code>. It is out of
                 normal flow; its width and height come from its contents.
@@ -104,7 +99,23 @@ export function App() {
                 child will shrink along with the Modal when limited by screen
                 size.
               </div>
-              <br />
+
+              <div className="my-4">
+                <input
+                  type="checkbox"
+                  checked={broken}
+                  onChange={() => setBroken((v) => !v)}
+                />
+                <span className="ml-2">
+                  Break the modal for smaller screens by not using{" "}
+                  <Code>max-w-full</Code>
+                </span>
+              </div>
+              {broken && (
+                <div className="w-[27rem]">
+                  Long text long text long text long text long text long text
+                </div>
+              )}
             </div>
           </div>
         </Modal>
@@ -124,13 +135,13 @@ export function App() {
           width={800}
           height={500}
           content={[
-            <div className="p-8">
-              <div className="text-6xl">Title text</div>
+            <div className="md:p-8">
+              <div className="text-2xl sm:text-6xl">Title text</div>
               <div className="text-lg sm:text-xl mt-6">
                 Click on the right arrow to see the next page.
               </div>
             </div>,
-            <div className="p-8">
+            <div className="md:p-8">
               <div className="text-lg sm:text-2xl mt-4">
                 You can also use the arrow keys{" "}
                 <span className="ml-2 rotate-90 inline-block">
@@ -138,18 +149,18 @@ export function App() {
                 </span>
               </div>
             </div>,
-            <div className="p-8">
+            <div className="md:p-8">
               <div className="text-lg sm:text-2xl mt-4">
                 Or click on the section markers below{" "}
                 <span className=" inline-block relative top-2 ml-1">⤵</span>{" "}
               </div>
             </div>,
-            <div className="p-8">
+            <div className="md:p-8">
               <div className="text-lg sm:text-2xl mt-4">
                 Just drink in that animation.
               </div>
             </div>,
-            <div className="p-8">
+            <div className="md:p-8">
               <div className="text-lg sm:text-2xl mt-4">
                 The modal closes when you click outside or press the Escape key.
               </div>
@@ -172,13 +183,13 @@ export function App() {
           height={440}
           springConfig={springConfig}
           content={[
-            <div className="p-8 pt-4">
-              <div className="text-5xl mb-4">Props</div>
+            <div className="md:p-8">
+              <div className="md:text-5xl mb-4">Props</div>
               {propsTable}
             </div>,
-            <div className="p-8 pt-4">
-              <div className="text-4xl mb-4">
-                <code className="text-3xl">springConfig</code> options
+            <div className="max-w-lg m-auto ">
+              <div className="md:text-4xl mb-4">
+                <code className="md:text-3xl">springConfig</code> options
               </div>
               <CheckboxSet
                 state={[springConfig, setSpringConfig]}
@@ -191,12 +202,12 @@ export function App() {
                   "molasses",
                 ]}
               />
-              <div className="text2xl mt-4">
+              <div className="md:text-xl mt-4">
                 These are the react-spring config options. Unfortunately most of
                 them just give users a headache.
               </div>
             </div>,
-            <div className="text-xl px-24 m-auto">
+            <div className="md:text-xl max-w-lg m-auto">
               <div className="mt-2 mb-6">
                 ContentModal automatically adds <Code>overflow-y: scroll</Code>{" "}
                 for each page that is taller than the height prop.{" "}
@@ -205,16 +216,18 @@ export function App() {
                 {longText + longText + longText}
               </div>
             </div>,
-            <div className="text-xl px-24 m-auto">
+            <div className="md:text-xl max-w-lg m-auto">
               <div className="mt-2 mb-6">
                 The modals are attached to a modal root element. If there is no
                 DOM element with id "modalRoot" it will insert one after the
                 element with id "root".
               </div>
             </div>,
-            <div className="p-8">
-              <div className="text-2xl mt-4">{darkMode}</div>
-              <div className="text-4xl absolute bottom-20 left-20">
+            <div className="md:p-8">
+              <div className="relative bottom-5 -right-6 text-2xl mt-4">
+                {darkMode}
+              </div>
+              <div className="text-4xl absolute bottom-20 md:left-20">
                 Twas brillig...
               </div>
             </div>,

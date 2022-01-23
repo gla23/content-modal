@@ -1,7 +1,7 @@
 import { defaultHeight, defaultWidth } from "./Modal/ContentModal";
 
 export const propsTable = (
-  <table>
+  <table className="text-sm md:text-lg">
     <tbody>
       <tr>
         <td>
@@ -35,7 +35,7 @@ export const propsTable = (
       </tr>
       <tr>
         <td>
-          <code>springConfig</code>
+          <code className="text-xs md:text-lg">springConfig</code>
         </td>
         <td>The react spring config to use. See next page!</td>
       </tr>
