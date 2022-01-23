@@ -1,1 +1,1 @@
-The modals are attached to a modal root element. If there is no DOM element with id "modalRoot" it will insert one after the element with id "root".
+A set of Tailwind modal components that I didn't want to copy-paste across projects. Have a look [here](https://gla23.github.io/content-modal/).

@@ -1,10 +1,12 @@
 {
   "name": "content-modal",
   "version": "0.0.0",
+  "homepage": "http://gla23.github.io/content-modal",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "./deploy.sh"
   },
   "dependencies": {
     "@react-spring/core": "^9.4.2",
