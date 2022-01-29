@@ -1,3 +1,4 @@
+import "./tailwindDump.css";
 export * from "./Modal/Modal";
 export * from "./Modal/ContentModal";
 export * from "./Sun";

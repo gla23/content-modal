@@ -1,4 +1,3 @@
-console.log(process.env.NODE_ENV);
 module.exports = {
   darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -7,7 +6,7 @@ module.exports = {
   },
   plugins: [],
   corePlugins: {
-    preflight: process.env.NODE_ENV === "development",
+    preflight: false,
   },
   prefix: "cm-",
 };

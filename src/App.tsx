@@ -7,6 +7,7 @@ import { propsTable } from "./propsTable";
 import { CheckboxSet } from "./CheckboxSet";
 import { Sun } from "./Sun";
 import { Moon } from "./Moon";
+import "./App.css";
 
 export function App() {
   const [dark, setDark] = useState(true);

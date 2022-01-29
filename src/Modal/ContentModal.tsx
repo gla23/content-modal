@@ -20,6 +20,7 @@ interface ContentModalProps {
    */
   width?: number;
   height?: number;
+  darkMode?: boolean;
   springConfig?:
     | "default"
     | "gentle"
@@ -37,6 +38,7 @@ export const ContentModal = (props: ContentModalProps) => {
     width = defaultWidth,
     height = defaultHeight,
     springConfig = "default",
+    darkMode,
   } = props;
 
   const [selected, setSelected] = useState(0);
@@ -67,6 +69,7 @@ export const ContentModal = (props: ContentModalProps) => {
         setTimeout(() => setSelected(0), 700);
         props.onClose();
       }}
+      darkMode={darkMode}
     >
       <div
         className="cm-flex cm-max-h-full cm-max-w-full"

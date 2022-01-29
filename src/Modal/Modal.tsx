@@ -12,6 +12,7 @@ export interface ModalProps {
   isOpen?: boolean;
   ref?: ((instance: HTMLDivElement | null) => void) | RefObject<HTMLDivElement>;
   padding?: string;
+  darkMode?: boolean;
 }
 export const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   useKeyPress("Escape", props.isOpen && props.onClose);
@@ -42,7 +43,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     root.parentNode?.insertBefore(modalRoot, root.nextSibling);
   }
   return ReactDOM.createPortal(
-    <>
+    <div className={props.darkMode ? "cm-dark" : ""}>
       {backgroundTransition((style, item) =>
         !item ? null : (
           <animated.div
@@ -64,7 +65,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         item ? (
           <animated.div
             ref={ref}
-            className="cm-transition-colours cm-bg-white cm-text-black cm-dark:bg-neutral-700 cm-dark:text-white"
+            className="cm-transition-colours cm-bg-white cm-text-black dark:cm-bg-neutral-700 dark:cm-text-white"
             style={{
               padding: props.padding ?? "1rem",
               position: "fixed",
@@ -90,7 +91,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
           </animated.div>
         ) : null
       )}
-    </>,
+    </div>,
     modalRoot
   );
 });
