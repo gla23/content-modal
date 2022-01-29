@@ -2,6 +2,7 @@ import { forwardRef, RefObject, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { animated, useTransition } from "react-spring";
 import { useKeyPress } from "./useKeypress";
+import React from "react";
 import "./Modal.css";
 
 export interface ModalProps {
@@ -62,7 +63,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
         item ? (
           <animated.div
             ref={ref}
-            className="transition-colours bg-white text-black dark:bg-neutral-700 dark:text-white"
+            className="cm-transition-colours cm-bg-white cm-text-black cm-dark:bg-neutral-700 cm-dark:text-white"
             style={{
               padding: props.padding ?? "1rem",
               position: "fixed",
@@ -74,7 +75,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
             }}
           >
             <div
-              className="flex"
+              className="cm-flex"
               style={{
                 maxWidth: "80vw",
                 minWidth: "min(80vw, 400px)",
@@ -82,7 +83,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
                 maxHeight: "min(calc(90vh - 100px), 500px)",
               }}
             >
-              <div className="overflow-auto">{props.children}</div>
+              <div className="cm-overflow-auto">{props.children}</div>
             </div>
           </animated.div>
         ) : null

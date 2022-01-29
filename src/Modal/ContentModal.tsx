@@ -68,7 +68,10 @@ export const ContentModal = (props: ContentModalProps) => {
         props.onClose();
       }}
     >
-      <div className="flex max-h-full max-w-full" style={{ width, height }}>
+      <div
+        className="cm-flex cm-max-h-full cm-max-w-full"
+        style={{ width, height }}
+      >
         <animated.div
           style={{ ...arrowStyle, opacity: spring.tab.to((v) => v) }}
           onClick={left}

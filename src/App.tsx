@@ -16,114 +16,118 @@ export function App() {
     "default" | "gentle" | "wobbly" | "stiff" | "slow" | "molasses"
   >("default");
   useEffect(() => {
-    if (dark) document.documentElement.classList.add("dark");
-    if (!dark) document.documentElement.classList.remove("dark");
+    if (dark) document.documentElement.classList.add("cm-dark");
+    if (!dark) document.documentElement.classList.remove("cm-dark");
   }, [dark]);
   const darkMode = (
     <div
-      className="text-3xl absolute top-8 right-8 md:right-9 md:top-9"
+      className="cm-text-3xl cm-absolute cm-top-8 cm-right-8 md:cm-right-9 md:cm-top-9"
       onClick={() => setDark((d) => !d)}
     >
       {dark ? <Moon /> : <Sun />}
     </div>
   );
   return (
-    <div className={"max-w-2xl m-auto p-10" + (dark ? " dark" : "")}>
+    <div
+      className={"cm-max-w-2xl cm-m-auto cm-p-10" + (dark ? " cm-dark" : "")}
+    >
       {darkMode}
-      <div className="text-lg sm:text-4xl whitespace-nowrap">
+      <div className="cm-text-lg sm:cm-text-4xl cm-whitespace-nowrap">
         content-modal examples{" "}
         <a href="https://github.com/gla23/content-modal">
           <img
-            className="-mt-1 ml-2 h-5 w-5 inline"
+            className="cm--mt-1 cm-ml-2 cm-h-5 cm-w-5 cm-inline"
             src={dark ? githubLogoDark : githubLogoLight}
             alt="GitHub logo"
           />
         </a>
       </div>
-      <div className="w-40 md:w-auto m-auto">
+      <div className="cm-w-40 md:cm-w-auto cm-m-auto">
         <br />
-        <div className="text-xl my-2">Modal component</div>
+        <div className="cm-text-xl cm-my-2">Modal component</div>
         <span
-          className="bg-neutral-500/50 p-2 px-5 rounded my-1 inline-block mr-48 sm:mr-4 w-40 sm:w-auto text-center"
+          className="cm-bg-neutral-500/50 cm-p-2 cm-px-5 cm-rounded cm-my-1 cm-inline-block cm-mr-48 sm:cm-mr-4 cm-w-40 sm:cm-w-auto cm-text-center"
           onClick={() => openModal(0)}
         >
           A simple modal
         </span>
         <Modal isOpen={modalOpen === 0} onClose={() => openModal(null)}>
-          <div className="p-4">
-            <div className="text-4xl">This is a modal</div>
-            <div className="mt-6">
+          <div className="cm-p-4">
+            <div className="cm-text-4xl">This is a modal</div>
+            <div className="cm-mt-6">
               The children provided to the Modal component appear inside.
             </div>
           </div>
         </Modal>
         <span
-          className="bg-neutral-500/50 p-2 px-5 rounded my-1 inline-block mr-48 sm:mr-4 w-40 sm:w-auto text-center"
+          className="cm-bg-neutral-500/50 cm-p-2 cm-px-5 cm-rounded cm-my-1 cm-inline-block cm-mr-48 sm:cm-mr-4 cm-w-40 sm:cm-w-auto cm-text-center"
           onClick={() => openModal(10)}
         >
           Lots of text
         </span>
         <Modal isOpen={modalOpen === 10} onClose={() => openModal(null)}>
-          <div className="p-4 max-h-full">
-            <div className="text-4xl mb-4">Modal height</div>
-            <div className="overflow-auto">
-              <div className="mb-4">The modal automatically adds scroll.</div>
-              <div className="mb-4">
+          <div className="cm-p-4 cm-max-h-full">
+            <div className="cm-text-4xl cm-mb-4">Modal height</div>
+            <div className="cm-overflow-auto">
+              <div className="cm-mb-4">
+                The modal automatically adds scroll.
+              </div>
+              <div className="cm-mb-4">
                 {longText + longText + longText + longText}
               </div>
             </div>
           </div>
         </Modal>
         <span
-          className="bg-neutral-500/50 p-2 px-5 rounded my-1 inline-block mr-48 sm:mr-4 w-40 sm:w-auto text-center"
+          className="cm-bg-neutral-500/50 cm-p-2 cm-px-5 cm-rounded cm-my-1 cm-inline-block cm-mr-48 sm:cm-mr-4 cm-w-40 sm:cm-w-auto cm-text-center"
           onClick={() => openModal(11)}
         >
           Custom size
         </span>
         <Modal isOpen={modalOpen === 11} onClose={() => openModal(null)}>
-          <div className="p-4 w-[48rem] max-w-full">
-            <div className="text-4xl">Custom size</div>
-            <div className="mt-6 ">
-              <div className="mb-4">
+          <div className="cm-p-4 cm-w-[48rem] cm-max-w-full">
+            <div className="cm-text-4xl">Custom size</div>
+            <div className="cm-mt-6">
+              <div className="cm-mb-4">
                 The Modal div is <Code>position: fixed</Code>. It is out of
                 normal flow; its width and height come from its contents.
               </div>
-              <div className="mb-4">
+              <div className="cm-mb-4">
                 This means you can specify a width on your child div with:{" "}
                 <Code>w-[48rem]</Code> and the modal will grow to fit your
                 content.
               </div>
-              <div className="my-4">
+              <div className="cm-my-4">
                 The Modal component also has a maximum and minimum width based
                 on the screen size. If you add <Code>max-w-full</Code>, your
                 child will shrink along with the Modal when limited by screen
                 size.
               </div>
 
-              <div className="my-4">
+              <div className="cm-my-4">
                 <input
                   type="checkbox"
                   checked={broken}
                   onChange={() => setBroken((v) => !v)}
                 />
-                <span className="ml-2">
+                <span className="cm-ml-2">
                   Break the modal for smaller screens by not using{" "}
                   <Code>max-w-full</Code>
                 </span>
               </div>
               {broken && (
-                <div className="w-[27rem]">
+                <div className="cm-w-[27rem]">
                   Long text long text long text long text long text long text
                 </div>
               )}
             </div>
           </div>
         </Modal>
-        <div className="break my-4"></div>
-        <div className="text-xl my-2">Content modal</div>
-        <span className="text-md md:text-xl whitespace-nowrap ">
+        <div className="cm-break cm-my-4"></div>
+        <div className="cm-text-xl cm-my-2">Content modal</div>
+        <span className="cm-text-md md:cm-text-xl cm-whitespace-nowrap cm-">
           <span
-            className="text-base bg-neutral-500/50 p-2 px-5 rounded my-1 mr-4 inline-block mr-48 sm:mr-4 w-40 sm:w-auto text-center"
+            className="cm-text-base cm-bg-neutral-500/50 cm-p-2 cm-px-5 cm-rounded cm-my-1 cm-mr-4 cm-inline-block cm-mr-48 sm:cm-mr-4 cm-w-40 sm:cm-w-auto cm-text-center"
             onClick={() => openModal(100)}
           >
             Features
@@ -135,42 +139,44 @@ export function App() {
           width={800}
           height={500}
           content={[
-            <div className="md:p-8">
-              <div className="text-2xl sm:text-6xl">Title text</div>
-              <div className="text-lg sm:text-xl mt-6">
+            <div className="md:cm-p-8">
+              <div className="cm-text-2xl sm:cm-text-6xl">Title text</div>
+              <div className="cm-text-lg sm:cm-text-xl cm-mt-6">
                 Click on the right arrow to see the next page.
               </div>
             </div>,
-            <div className="md:p-8">
-              <div className="text-lg sm:text-2xl mt-4">
+            <div className="md:cm-p-8">
+              <div className="cm-text-lg sm:cm-text-2xl cm-mt-4">
                 You can also use the arrow keys{" "}
-                <span className="ml-2 rotate-90 inline-block">
-                  <span className="animate-bounce inline-block">⬆️</span>
+                <span className="cm-ml-2 cm-rotate-90 cm-inline-block">
+                  <span className="cm-animate-bounce cm-inline-block">⬆️</span>
                 </span>
               </div>
             </div>,
-            <div className="md:p-8">
-              <div className="text-lg sm:text-2xl mt-4">
+            <div className="md:cm-p-8">
+              <div className="cm-text-lg sm:cm-text-2xl cm-mt-4">
                 Or click on the section markers below{" "}
-                <span className=" inline-block relative top-2 ml-1">⤵</span>{" "}
+                <span className="cm-inline-block cm-relative cm-top-2 cm-ml-1">
+                  ⤵
+                </span>{" "}
               </div>
             </div>,
-            <div className="md:p-8">
-              <div className="text-lg sm:text-2xl mt-4">
+            <div className="md:cm-p-8">
+              <div className="cm-text-lg sm:cm-text-2xl cm-mt-4">
                 Just drink in that animation.
               </div>
             </div>,
-            <div className="md:p-8">
-              <div className="text-lg sm:text-2xl mt-4">
+            <div className="md:cm-p-8">
+              <div className="cm-text-lg sm:cm-text-2xl cm-mt-4">
                 The modal closes when you click outside or press the Escape key.
               </div>
             </div>,
           ]}
         />
 
-        <span className="text-md md:text-xl">
+        <span className="cm-text-md md:cm-text-xl">
           <span
-            className="text-base bg-neutral-500/50 p-2 px-5 rounded my-1 mr-4 inline-block mr-48 sm:mr-4 w-40 sm:w-auto text-center"
+            className="cm-text-base cm-bg-neutral-500/50 cm-p-2 cm-px-5 cm-rounded cm-my-1 cm-mr-4 cm-inline-block cm-mr-48 sm:cm-mr-4 cm-w-40 sm:cm-w-auto cm-text-center"
             onClick={() => openModal(101)}
           >
             Usage
@@ -183,13 +189,13 @@ export function App() {
           height={440}
           springConfig={springConfig}
           content={[
-            <div className="md:p-8">
-              <div className="md:text-5xl mb-4">Props</div>
+            <div className="md:cm-p-8">
+              <div className="md:cm-text-5xl cm-mb-4">Props</div>
               {propsTable}
             </div>,
-            <div className="max-w-lg m-auto ">
-              <div className="md:text-4xl mb-4">
-                <code className="md:text-3xl">springConfig</code> options
+            <div className="cm-max-w-lg cm-m-auto cm-">
+              <div className="md:cm-text-4xl cm-mb-4">
+                <code className="md:cm-text-3xl">springConfig</code> options
               </div>
               <CheckboxSet
                 state={[springConfig, setSpringConfig]}
@@ -202,32 +208,32 @@ export function App() {
                   "molasses",
                 ]}
               />
-              <div className="md:text-xl mt-4">
+              <div className="md:cm-text-xl cm-mt-4">
                 These are the react-spring config options. Unfortunately most of
                 them just give users a headache.
               </div>
             </div>,
-            <div className="md:text-xl max-w-lg m-auto">
-              <div className="mt-2 mb-6">
+            <div className="md:cm-text-xl cm-max-w-lg cm-m-auto">
+              <div className="cm-mt-2 cm-mb-6">
                 ContentModal automatically adds <Code>overflow-y: scroll</Code>{" "}
                 for each page that is taller than the height prop.{" "}
               </div>
-              <div className="mb-6 opacity-50">
+              <div className="cm-mb-6 cm-opacity-50">
                 {longText + longText + longText}
               </div>
             </div>,
-            <div className="md:text-xl max-w-lg m-auto">
-              <div className="mt-2 mb-6">
+            <div className="md:cm-text-xl cm-max-w-lg cm-m-auto">
+              <div className="cm-mt-2 cm-mb-6">
                 The modals are attached to a modal root element. If there is no
                 DOM element with id "modalRoot" it will insert one after the
                 element with id "root".
               </div>
             </div>,
-            <div className="md:p-8">
-              <div className="relative bottom-5 -right-6 text-2xl mt-4">
+            <div className="md:cm-p-8">
+              <div className="cm-relative cm-bottom-5 cm--right-6 cm-text-2xl cm-mt-4">
                 {darkMode}
               </div>
-              <div className="text-4xl absolute bottom-20 md:left-20">
+              <div className="cm-text-4xl cm-absolute cm-bottom-20 md:cm-left-20">
                 Twas brillig...
               </div>
             </div>,
@@ -239,7 +245,11 @@ export function App() {
 }
 
 function Code(props: { children: Renderable }) {
-  return <code className="text-red-500/60 text-sm mx-1">{props.children}</code>;
+  return (
+    <code className="cm-text-red-500/60 cm-text-sm cm-mx-1">
+      {props.children}
+    </code>
+  );
 }
 const longText = `
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum

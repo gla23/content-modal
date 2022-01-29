@@ -1,3 +1,5 @@
+import React from "react";
+
 export function Moon() {
   const size = 25;
   const holeSize = 23;
@@ -13,12 +15,12 @@ export function Moon() {
       <Star />
       <Star /> */}
       <div
-        className="relative w-10 h-10 scale-125"
+        className="cm-relative cm-w-10 cm-h-10 cm-scale-125"
         style={{ mask, WebkitMaskImage: mask }}
       >
         <div
           style={{ width: size, height: size }}
-          className="bg-neutral-300 rounded-full absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
+          className="cm-bg-neutral-300 cm-rounded-full cm-absolute cm-top-1/2 cm-left-1/2 cm--translate-y-1/2 cm--translate-x-1/2"
         />
       </div>
     </>

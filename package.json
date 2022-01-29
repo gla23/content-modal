@@ -1,24 +1,27 @@
 {
   "name": "content-modal",
-  "version": "0.0.0",
+  "version": "0.0.3",
   "homepage": "http://gla23.github.io/content-modal",
+  "license": "MIT",
+  "main": "src/package.ts",
+
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "deploy": "./deploy.sh"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@react-spring/core": "^9.4.2",
     "@react-spring/web": "^9.4.2",
-    "autoprefixer": "^10.4.2",
-    "postcss": "^8.4.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-spring": "^9.4.2",
-    "tailwindcss": "^3.0.15"
+    "react-spring": "^9.4.2"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.2",
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.15",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
     "@vitejs/plugin-react": "^1.0.7",

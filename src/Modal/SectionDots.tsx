@@ -1,6 +1,7 @@
 import { useSprings } from "@react-spring/core";
 import { animated } from "@react-spring/web";
 import { StatePair } from "../CheckboxSet";
+import React from "react";
 
 interface SectionDotsProps {
   count: number;
@@ -28,7 +29,7 @@ export const SectionDots = (props: SectionDotsProps) => {
   );
   return (
     <div
-      className="relative inline-block"
+      className="cm-relative cm-inline-block"
       style={{
         height: height + "px",
         width: props.count * spacing + extraBulgeWidth,

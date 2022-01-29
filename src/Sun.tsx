@@ -1,3 +1,4 @@
+import React from "react";
 import { animated, useSpring } from "react-spring";
 
 export function Sun() {
@@ -14,7 +15,7 @@ export function Sun() {
     rays.push(
       <animated.div
         key={i}
-        className="w-1.5 h-0.5 bg-neutral-400 rounded absolute"
+        className="cm-w-1.5 cm-h-0.5 cm-bg-neutral-400 cm-rounded cm-absolute"
         style={{
           top: "50%",
           left: "50%",
@@ -34,10 +35,10 @@ export function Sun() {
 
   const size = 18;
   return (
-    <div className="relative w-10 h-10 scale-125">
+    <div className="cm-relative cm-w-10 cm-h-10 cm-scale-125">
       <div
         style={{ width: size, height: size }}
-        className="bg-neutral-400 rounded-full absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"
+        className="cm-bg-neutral-400 cm-rounded-full cm-absolute cm-top-1/2 cm-left-1/2 cm--translate-y-1/2 cm--translate-x-1/2"
       />
       {rays}
     </div>
