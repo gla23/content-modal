@@ -54,6 +54,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
               width: "100vw",
               height: "100vh",
               backgroundColor: "black",
+              zIndex: 300,
             }}
             onClick={props.onClose}
           />
@@ -72,6 +73,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
               left: "50vw",
               transform: "translateX(-50%)",
               borderRadius: "8px",
+              zIndex: 300,
             }}
           >
             <div
