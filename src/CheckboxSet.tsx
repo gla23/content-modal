@@ -10,7 +10,7 @@ export function CheckboxSet<T extends string | number>(props: {
       {props.options.map((option) => (
         <div key={"radio_" + id + "_" + option}>
           <input
-            className="mx-4 my-2"
+            className="cm-mx-4 cm-my-2"
             type="radio"
             id={"radio_" + id + "_" + option}
             checked={props.state[0] === option}

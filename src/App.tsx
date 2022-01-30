@@ -190,8 +190,8 @@ export function App() {
           height={440}
           springConfig={springConfig}
           content={[
-            <div className="md:cm-p-8">
-              <div className="md:cm-text-5xl cm-mb-4">Props</div>
+            <div className="md:cm-px-8">
+              <div className="md:cm-text-4xl cm-my-2">Props</div>
               {propsTable}
             </div>,
             <div className="cm-max-w-lg cm-m-auto cm-">
@@ -209,7 +209,7 @@ export function App() {
                   "molasses",
                 ]}
               />
-              <div className="md:cm-text-xl cm-mt-4">
+              <div className="md:cm-text-lg cm-mt-4">
                 These are the react-spring config options. Unfortunately most of
                 them just give users a headache.
               </div>

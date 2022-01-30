@@ -35,6 +35,12 @@ export const propsTable = (
       </tr>
       <tr>
         <td>
+          <code>darkMode</code>
+        </td>
+        <td>Whether to display in dark or light mode</td>
+      </tr>
+      <tr>
+        <td>
           <code className="text-xs md:text-lg">springConfig</code>
         </td>
         <td>The react spring config to use. See next page!</td>

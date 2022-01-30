@@ -37,7 +37,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
   let modalRoot = document.querySelector("#modalRoot");
   if (!modalRoot) {
     const root = document.querySelector("#root");
-    if (!root) throw new Error("No root element found");
+    if (!root) throw new Error("No modalRoot or root element found");
     modalRoot = document.createElement("div");
     modalRoot.setAttribute("id", "modalRoot");
     root.parentNode?.insertBefore(modalRoot, root.nextSibling);
