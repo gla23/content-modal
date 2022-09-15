@@ -1,7 +1,7 @@
 import { defaultHeight, defaultWidth } from "./Modal/ContentModal";
 
 export const propsTable = (
-  <table className="text-sm md:text-lg">
+  <table className="cm-text-sm md:cm-text-lg">
     <tbody>
       <tr>
         <td>
@@ -21,7 +21,7 @@ export const propsTable = (
         </td>
         <td>Your array of content, each element producing a page</td>
       </tr>
-      <tr>
+      <tr className="md:cm-table-row cm-hidden">
         <td>
           <code>currentPageState</code>
         </td>

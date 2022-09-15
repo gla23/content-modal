@@ -21,6 +21,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     from: { opacity: 0 },
     enter: { opacity: 0.5 },
     leave: { opacity: 0 },
+    config: { duration: 300 },
   });
   const modalTransition = useTransition(props.isOpen, {
     from: { opacity: 0, top: -1000 },
