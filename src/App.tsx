@@ -20,6 +20,15 @@ export function App() {
     if (dark) document.documentElement.classList.add("cm-dark");
     if (!dark) document.documentElement.classList.remove("cm-dark");
   }, [dark]);
+
+  // State hoist example
+  const hoistedState = useState(0);
+  const [currentPage, setCurrentPage] = hoistedState;
+  const [counterKey, setCounterKey] = useState(0);
+  useEffect(() => {
+    if (currentPage === 1) setCounterKey((k) => k + 1);
+  }, [currentPage]);
+
   const darkMode = (
     <div
       className="cm-text-3xl cm-absolute cm-top-8 cm-right-8 md:cm-right-9 md:cm-top-9"
@@ -186,8 +195,8 @@ export function App() {
         <ContentModal
           isOpen={modalOpen === 101}
           onClose={() => openModal(null)}
-          width={750}
-          height={440}
+          width={780}
+          height={500}
           springConfig={springConfig}
           content={[
             <div className="md:cm-px-8">
@@ -240,11 +249,64 @@ export function App() {
             </div>,
           ]}
         />
+
+        <span className="cm-text-md md:cm-text-xl">
+          <span
+            className="cm-text-base cm-bg-neutral-500/50 cm-p-2 cm-px-5 cm-rounded cm-my-1 cm-inline-block cm-mr-48 sm:cm-mr-4 cm-w-40 sm:cm-w-auto cm-text-center"
+            onClick={() => openModal(102)}
+          >
+            State hoisting
+          </span>
+        </span>
+        <ContentModal
+          isOpen={modalOpen === 102}
+          onClose={() => openModal(null)}
+          width={580}
+          height={350}
+          springConfig={springConfig}
+          currentPageState={hoistedState}
+          content={[
+            <div>
+              <p>
+                This example demonstrates the <Code>currentPageState</Code>{" "}
+                prop.
+              </p>
+              <p className="cm-mt-4">
+                This prop allows you to hoist the page state out of the
+                component. You can create custom effects based on the users
+                actions.
+              </p>
+              <p className="cm-mt-4">
+                The next page contains a counter that restarts when you move to
+                its page.
+              </p>
+            </div>,
+            <div>
+              <Counter key={counterKey} />
+            </div>,
+            <div>
+              You can also change the page state yourself:{" "}
+              <span
+                className="cm-text-sky-500"
+                onClick={() => setCurrentPage(0)}
+              >
+                click me
+              </span>
+            </div>,
+          ]}
+        />
       </div>
     </div>
   );
 }
-
+function Counter() {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const interval = setInterval(() => setCount((c) => c + 1), 1000);
+    return () => clearInterval(interval);
+  }, []);
+  return <div className="cm-text-5xl cm-m-auto cm-w-8 cm-mt-5">{count}</div>;
+}
 function Code(props: { children: Renderable }) {
   return (
     <code className="cm-text-red-500/60 cm-text-sm cm-mx-1">

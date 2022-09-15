@@ -13,13 +13,22 @@ export const propsTable = (
         <td>
           <code>onClose</code>
         </td>
-        <td>A callback to call when the user closes the modal</td>
+        <td>A callback for when the user closes the modal</td>
       </tr>
       <tr>
         <td>
           <code>content</code>
         </td>
         <td>Your array of content, each element producing a page</td>
+      </tr>
+      <tr>
+        <td>
+          <code>currentPageState</code>
+        </td>
+        <td>
+          By default this state is contained within the component, however you
+          can hoist the state out by providing a useState array.
+        </td>
       </tr>
       <tr>
         <td>

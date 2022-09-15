@@ -11,6 +11,8 @@ export type Renderable =
   | JSX.Element
   | Renderable[];
 
+type StatePair = [number, React.Dispatch<React.SetStateAction<number>>];
+
 interface ContentModalProps {
   content: Renderable[];
   onClose: () => void;
@@ -21,6 +23,10 @@ interface ContentModalProps {
   width?: number;
   height?: number;
   darkMode?: boolean;
+  /**
+   * @description To hoist the state for which page you are viewing out of the component provide a useState tuple here
+   */
+  currentPageState?: StatePair;
   springConfig?:
     | "default"
     | "gentle"
@@ -39,9 +45,10 @@ export const ContentModal = (props: ContentModalProps) => {
     height = defaultHeight,
     springConfig = "default",
     darkMode,
+    currentPageState: selectedState,
   } = props;
-
-  const [selected, setSelected] = useState(0);
+  const backupState = useState(0);
+  const [selected, setSelected] = selectedState || backupState;
   const increaseIndex = (increace: number) =>
     setSelected(Math.min(content.length - 1, Math.max(0, selected + increace)));
   const dotsHeight = 32;
