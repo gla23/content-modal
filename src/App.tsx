@@ -39,11 +39,11 @@ export function App() {
   );
   return (
     <div
-      className={"cm-max-w-2xl cm-m-auto cm-p-10" + (dark ? " cm-dark" : "")}
+      className={"cm-max-w-3xl cm-m-auto cm-p-10" + (dark ? " cm-dark" : "")}
     >
       {darkMode}
       <div className="cm-text-lg sm:cm-text-4xl cm-whitespace-nowrap">
-        content-modal examples{" "}
+        <span className="cm-font-mono">content-modal</span> package{" "}
         <a href="https://github.com/gla23/content-modal">
           <img
             className="cm--mt-1 cm-ml-2 cm-h-5 cm-w-5 cm-inline"
@@ -52,92 +52,18 @@ export function App() {
           />
         </a>
       </div>
-      <div className="cm-w-40 md:cm-w-auto cm-m-auto">
+      <div className="cm-w-60 md:cm-w-auto cm-m-auto">
         <br />
-        <div className="cm-text-xl cm-my-2">Modal component</div>
-        <span
-          className="cm-bg-neutral-500/50 cm-p-2 cm-px-5 cm-rounded cm-my-1 cm-inline-block cm-mr-48 sm:cm-mr-4 cm-w-40 sm:cm-w-auto cm-text-center"
-          onClick={() => openModal(0)}
-        >
-          A simple modal
-        </span>
-        <Modal isOpen={modalOpen === 0} onClose={() => openModal(null)}>
-          <div className="cm-p-4">
-            <div className="cm-text-4xl">This is a modal</div>
-            <div className="cm-mt-6">
-              The children provided to the Modal component appear inside.
-            </div>
-          </div>
-        </Modal>
-        <span
-          className="cm-bg-neutral-500/50 cm-p-2 cm-px-5 cm-rounded cm-my-1 cm-inline-block cm-mr-48 sm:cm-mr-4 cm-w-40 sm:cm-w-auto cm-text-center"
-          onClick={() => openModal(10)}
-        >
-          Lots of text
-        </span>
-        <Modal isOpen={modalOpen === 10} onClose={() => openModal(null)}>
-          <div className="cm-p-4 cm-max-h-full">
-            <div className="cm-text-4xl cm-mb-4">Modal height</div>
-            <div className="cm-overflow-auto">
-              <div className="cm-mb-4">
-                The modal automatically adds scroll.
-              </div>
-              <div className="cm-mb-4">
-                {longText + longText + longText + longText}
-              </div>
-            </div>
-          </div>
-        </Modal>
-        <span
-          className="cm-bg-neutral-500/50 cm-p-2 cm-px-5 cm-rounded cm-my-1 cm-inline-block cm-mr-48 sm:cm-mr-4 cm-w-40 sm:cm-w-auto cm-text-center"
-          onClick={() => openModal(11)}
-        >
-          Custom size
-        </span>
-        <Modal isOpen={modalOpen === 11} onClose={() => openModal(null)}>
-          <div className="cm-p-4 cm-w-[48rem] cm-max-w-full">
-            <div className="cm-text-4xl">Custom size</div>
-            <div className="cm-mt-6">
-              <div className="cm-mb-4">
-                The Modal div is <Code>position: fixed</Code>. It is out of
-                normal flow; its width and height come from its contents.
-              </div>
-              <div className="cm-mb-4">
-                This means you can specify a width on your child div with:{" "}
-                <Code>w-[48rem]</Code> and the modal will grow to fit your
-                content.
-              </div>
-              <div className="cm-my-4">
-                The Modal component also has a maximum and minimum width based
-                on the screen size. If you add <Code>max-w-full</Code>, your
-                child will shrink along with the Modal when limited by screen
-                size.
-              </div>
-
-              <div className="cm-my-4">
-                <input
-                  type="checkbox"
-                  checked={broken}
-                  onChange={() => setBroken((v) => !v)}
-                />
-                <span className="cm-ml-2">
-                  Break the modal for smaller screens by not using{" "}
-                  <Code>max-w-full</Code>
-                </span>
-              </div>
-              {broken && (
-                <div className="cm-w-[27rem]">
-                  Long text long text long text long text long text long text
-                </div>
-              )}
-            </div>
-          </div>
-        </Modal>
-        <div className="cm-break cm-my-4"></div>
-        <div className="cm-text-xl cm-my-2">Content modal</div>
+        <div className="cm-text-xl cm-my-2">
+          <span className="cm-font-mono">ContentModal</span> component
+        </div>
+        <p className="cm-mb-4">
+          A modal that contains multiple pages of content. Test out the examples
+          below:
+        </p>
         <span className="cm-text-md md:cm-text-xl cm-whitespace-nowrap cm-">
           <span
-            className="cm-text-base cm-bg-neutral-500/50 cm-p-2 cm-px-5 cm-rounded cm-my-1 cm-mr-4 cm-inline-block cm-mr-48 sm:cm-mr-4 cm-w-40 sm:cm-w-auto cm-text-center"
+            className="cm-text-base cm-bg-neutral-500/50 cm-p-2 cm-px-5 cm-rounded cm-my-1 cm-inline-block cm-mr-8 sm:cm-mr-4 cm-w-40 sm:cm-w-auto cm-text-center"
             onClick={() => openModal(100)}
           >
             Features
@@ -150,7 +76,7 @@ export function App() {
           height={500}
           content={[
             <div className="md:cm-p-8">
-              <div className="cm-text-2xl sm:cm-text-6xl">Title text</div>
+              <div className="cm-text-2xl sm:cm-text-6xl">Multi-page modal</div>
               <div className="cm-text-lg sm:cm-text-xl cm-mt-6">
                 Click on the right arrow to see the next page.
               </div>
@@ -183,10 +109,9 @@ export function App() {
             </div>,
           ]}
         />
-
         <span className="cm-text-md md:cm-text-xl">
           <span
-            className="cm-text-base cm-bg-neutral-500/50 cm-p-2 cm-px-5 cm-rounded cm-my-1 cm-mr-4 cm-inline-block cm-mr-48 sm:cm-mr-4 cm-w-40 sm:cm-w-auto cm-text-center"
+            className="cm-text-base cm-bg-neutral-500/50 cm-p-2 cm-px-5 cm-rounded cm-my-1 cm-inline-block cm-mr-8 sm:cm-mr-4 cm-w-40 sm:cm-w-auto cm-text-center"
             onClick={() => openModal(101)}
           >
             Usage
@@ -249,10 +174,9 @@ export function App() {
             </div>,
           ]}
         />
-
         <span className="cm-text-md md:cm-text-xl">
           <span
-            className="cm-text-base cm-bg-neutral-500/50 cm-p-2 cm-px-5 cm-rounded cm-my-1 cm-inline-block cm-mr-48 sm:cm-mr-4 cm-w-40 sm:cm-w-auto cm-text-center"
+            className="cm-text-base cm-bg-neutral-500/50 cm-p-2 cm-px-5 cm-rounded cm-my-1 cm-inline-block cm-mr-8 sm:cm-mr-4 cm-w-40 sm:cm-w-auto cm-text-center"
             onClick={() => openModal(102)}
           >
             State hoisting
@@ -295,6 +219,90 @@ export function App() {
             </div>,
           ]}
         />
+        <div className="cm-break cm-my-4"></div>
+        <div className="cm-text-xl cm-my-2 cm-mt-12">
+          <span className="cm-font-mono">Modal</span> component
+        </div>
+        <div>The modal component that ContentModal is built upon.</div>
+
+        <span
+          className="cm-mt-4 cm-bg-neutral-500/50 cm-p-2 cm-px-5 cm-rounded cm-my-1 cm-inline-block cm-mr-8 sm:cm-mr-4 cm-w-40 sm:cm-w-auto cm-text-center"
+          onClick={() => openModal(0)}
+        >
+          A simple modal
+        </span>
+        <Modal isOpen={modalOpen === 0} onClose={() => openModal(null)}>
+          <div className="cm-p-4">
+            <div className="cm-text-4xl">This is a modal</div>
+            <div className="cm-mt-6">
+              The children provided to the Modal component appear inside.
+            </div>
+          </div>
+        </Modal>
+        <span
+          className="cm-bg-neutral-500/50 cm-p-2 cm-px-5 cm-rounded cm-my-1 cm-inline-block cm-mr-8 sm:cm-mr-4 cm-w-40 sm:cm-w-auto cm-text-center"
+          onClick={() => openModal(10)}
+        >
+          Lots of text
+        </span>
+        <Modal isOpen={modalOpen === 10} onClose={() => openModal(null)}>
+          <div className="cm-p-4 cm-max-h-full">
+            <div className="cm-text-4xl cm-mb-4">Modal height</div>
+            <div className="cm-overflow-auto">
+              <div className="cm-mb-4">
+                The modal automatically adds scroll.
+              </div>
+              <div className="cm-mb-4">
+                {longText + longText + longText + longText}
+              </div>
+            </div>
+          </div>
+        </Modal>
+        <span
+          className="cm-bg-neutral-500/50 cm-p-2 cm-px-5 cm-rounded cm-my-1 cm-inline-block cm-mr-8 sm:cm-mr-4 cm-w-40 sm:cm-w-auto cm-text-center"
+          onClick={() => openModal(11)}
+        >
+          Custom size
+        </span>
+        <Modal isOpen={modalOpen === 11} onClose={() => openModal(null)}>
+          <div className="cm-p-4 cm-w-[48rem] cm-max-w-full">
+            <div className="cm-text-4xl">Custom size</div>
+            <div className="cm-mt-6">
+              <div className="cm-mb-4">
+                The Modal div is <Code>position: fixed</Code>. It is out of
+                normal flow; its width and height come from its contents.
+              </div>
+              <div className="cm-mb-4">
+                This means you can specify a width on your child div with:{" "}
+                <Code>w-[48rem]</Code> and the modal will grow to fit your
+                content.
+              </div>
+              <div className="cm-my-4">
+                The Modal component also has a maximum and minimum width based
+                on the screen size. If you add <Code>max-w-full</Code>, your
+                child will shrink along with the Modal when limited by screen
+                size.
+              </div>
+
+              <div className="cm-my-4">
+                <input
+                  type="checkbox"
+                  checked={broken}
+                  onChange={() => setBroken((v) => !v)}
+                />
+                <span className="cm-ml-2">
+                  Break the modal for smaller screens by not using{" "}
+                  <Code>max-w-full</Code>
+                </span>
+              </div>
+              {broken && (
+                <div className="cm-w-[27rem]">
+                  Long text long text long text long text long text long text
+                </div>
+              )}
+            </div>
+          </div>
+        </Modal>
       </div>
     </div>
   );
