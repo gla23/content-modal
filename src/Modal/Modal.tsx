@@ -43,6 +43,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
     modalRoot.setAttribute("id", "modalRoot");
     root.parentNode?.insertBefore(modalRoot, root.nextSibling);
   }
+  const padding = props.padding ?? "1rem";
   return ReactDOM.createPortal(
     <div className={props.darkMode ? "cm-dark" : ""}>
       {backgroundTransition((style, item) =>
@@ -68,7 +69,7 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
             ref={ref}
             className="cm-transition-colours cm-bg-white cm-text-black dark:cm-bg-neutral-700 dark:cm-text-white"
             style={{
-              padding: props.padding ?? "1rem",
+              padding,
               position: "fixed",
               ...style,
               margin: "auto",
@@ -81,7 +82,8 @@ export const Modal = forwardRef<HTMLDivElement, ModalProps>((props, ref) => {
             <div
               className="cm-flex"
               style={{
-                maxWidth: "80vw",
+                maxWidth: `calc(90vw - 2 * ${padding})`,
+                // width: "100%",
                 minWidth: "min(80vw, 400px)",
                 minHeight: "220px",
                 maxHeight: "min(calc(90vh - 100px), 500px)",

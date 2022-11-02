@@ -201,8 +201,8 @@ export function App() {
                 actions.
               </p>
               <p className="cm-mt-4">
-                The next page contains a counter that restarts when you move to
-                its page.
+                The next page uses the prop to restart a time when you move to
+                the page.
               </p>
             </div>,
             <div>
@@ -223,7 +223,9 @@ export function App() {
         <div className="cm-text-xl cm-my-2 cm-mt-12">
           <span className="cm-font-mono">Modal</span> component
         </div>
-        <div>The modal component that ContentModal is built upon.</div>
+        <div>
+          This is the modal component that ContentModal is built on top of.
+        </div>
 
         <span
           className="cm-mt-4 cm-bg-neutral-500/50 cm-p-2 cm-px-5 cm-rounded cm-my-1 cm-inline-block cm-mr-8 sm:cm-mr-4 cm-w-40 sm:cm-w-auto cm-text-center"
